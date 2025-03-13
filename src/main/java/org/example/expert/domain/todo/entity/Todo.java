@@ -27,7 +27,8 @@ public class Todo extends Timestamped {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "todo", cascade = CascadeType.REMOVE)
+    // N+1 문제 해결을 위해 fetch 전략 EAGER로 수정. 대규모 데이터 발생시 이슈 발생 가능성 있음.
+    @OneToMany(mappedBy = "todo", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
 
     // 일정이 삭제되면 매니저 모두 삭제, 리스트에서 매니저 하나 제거시 db에서 삭제,
