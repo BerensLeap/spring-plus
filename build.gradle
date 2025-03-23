@@ -55,7 +55,7 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated"]
+            srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated/sources/annotationProcessor/java/main"]
         }
     }
 }
